@@ -20,4 +20,7 @@ router
     .put(updateUser)
     .delete(deleteUser);
 
+// route and dynamic idea for friends similar to line 17-21
+// Set up
+
 module.exports = router;

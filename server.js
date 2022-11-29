@@ -10,8 +10,6 @@ app.use(express.static('public'));
 
 app.use(require('./routes'));
 
-// SEEMS TO BE WORKING BUT ALL I GET ARE 404 ERRORS ????
-
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/inkling');
 
 // use this to log mongo queries being executed
