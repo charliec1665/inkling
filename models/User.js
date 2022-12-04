@@ -19,7 +19,7 @@ const UserSchema = new Schema ({
             ref: 'Inkling' // data comes from Inkling model
         }
     ],
-    squids: [
+    squids: [ // squids = friends
         {
             type: Schema.Types.ObjectId, // expect object id
             ref: 'User' // self-reference

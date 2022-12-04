@@ -1,3 +1,4 @@
+const { response } = require('express');
 const { User } = require('../models');
 
 const userController = {
@@ -52,7 +53,7 @@ const userController = {
 
     // create User
     // we destructure 'body' out of Express req object
-    createUser({ body}, res) {
+    createUser({ body }, res) {
         // .create() method will handle either .insertOne or .insertMany
         User.create(body)
             .then(dbUserData => res.json(dbUserData))
@@ -83,6 +84,32 @@ const userController = {
                     return;
                 }
                 res.json(dbUserData);
+            })
+            .catch(err => res.status(400).json(err));
+    },
+
+    // POST add new User aka Squid aka /api/users/:userId/squids/:squidId
+    createSquid({ params }, res) {
+        User.findOneAndUpdate({ _id: params.id }, { new: true })
+            .then(dbSquidData => {
+                if (!dbSquidData) {
+                    res.status(404).json({ message: 'No user found with this id!'});
+                    return;
+                }
+                res.json(dbSquidData);
+            })
+            .catch(err => res.status(400).json(err));
+    },
+
+    // delete squid DELETE /api/users/:userId/squids/:squidId
+    deleteSquid({ params }, res) {
+        User.findOneAndDelete({ _id: params.id })
+            .then(dbSquidData => {
+                if (!dbSquidData) {
+                    res.status(400).json({ message: 'No user found with this id!'});
+                    return;
+                }
+                res.json(dbSquidData);
             })
             .catch(err => res.status(400).json(err));
     }

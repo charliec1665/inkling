@@ -4,7 +4,9 @@ const {
     getUserById,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    createSquid,
+    deleteSquid
 } = require('../../controllers/user-controller');
 
 // Set up GET all and POST at /api/users
@@ -21,6 +23,10 @@ router
     .delete(deleteUser);
 
 // route and dynamic idea for friends similar to line 17-21
-// Set up
+// Set up POST and DELETE to add and delete user's from friends (aka squids list)
+router
+    .route('/:userId/squids/:squidId')
+    .post(createSquid)
+    .delete(deleteSquid);
 
 module.exports = router;
