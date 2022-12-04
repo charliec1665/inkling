@@ -89,8 +89,9 @@ const userController = {
     },
 
     // POST add new User aka Squid aka /api/users/:userId/squids/:squidId
+    //////// currently getting 404 even with correct id ////////
     createSquid({ params }, res) {
-        User.findOneAndUpdate({ _id: params.id }, { new: true })
+        User.findOneAndUpdate({ _id: params.id })
             .then(dbSquidData => {
                 if (!dbSquidData) {
                     res.status(404).json({ message: 'No user found with this id!'});
