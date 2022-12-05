@@ -10,3 +10,9 @@ Since Inkling is currently only a server-side API, in order to explore it's use 
 
 ## Usage
 
+Following the installation instructions, the user will need to fill in each route's parameters as JSON in Insomnia, and/or ensuring that the correct _id is supplied when needed.
+
+## Credits
+
+Made with 💛 by me, Charlie.
+You can find more of my work [here](https://github.com/charliec1665), on GitHub.
